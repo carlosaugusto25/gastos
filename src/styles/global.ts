@@ -20,17 +20,17 @@ export default createGlobalStyle`
     }
 
     :root {
-        --background: '#f0f2f5';
-        --text-title: '#363f5f';
-        --text-body: '#969cb3';
-        --white: '#fff';
+        --background: #f0f2f5;
+        --text-title: #363f5f;
+        --text-body: #969cb3;
+        --white: #fff;
 
-        --red-header: '#811628';
-        --blue-dark: '#412a9c';
-        --blue-medium: '#1b66ff';
-        --blue-light: '#00cef5';
+        --red-header: #811628;
+        --blue-dark: #412a9c;
+        --blue-medium: #1b66ff;
+        --blue-light: #00cef5;
 
-        --red-primary: '#e52e4d';
+        --red-primary: #e52e4d;
     }
 
     body {

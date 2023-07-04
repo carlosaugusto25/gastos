@@ -1,14 +1,17 @@
-import { RiMoneyDollarBoxFill } from 'react-icons/ri';
-import { Container } from './styles';
+import { Container, Content } from './styles';
+import logo from '../../assets/cifrao.png';
 
-export function Header(){
-    return(
+export function Header() {
+    return (
         <Container>
-            <div className='logo-and-name'>
-                <RiMoneyDollarBoxFill />
-                <p>Gastos</p>
-            </div>
-            <button>Nova transação</button>
+            <Content>
+                <div className='logo-and-name'>
+                    {/* <RiMoneyDollarBoxFill className='icon' /> */}
+                    <img src={logo} alt="logo" />
+                    <p>Gastos</p>
+                </div>
+                <button>Nova transação</button>
+            </Content>
         </Container>
     )
 }
