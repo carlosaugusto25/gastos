@@ -31,6 +31,7 @@ export default createGlobalStyle`
         --blue-light: #00cef5;
 
         --red-primary: #e52e4d;
+        --green-primary: #5adb94;
     }
 
     body {

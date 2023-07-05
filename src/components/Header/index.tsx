@@ -6,7 +6,6 @@ export function Header() {
         <Container>
             <Content>
                 <div className='logo-and-name'>
-                    {/* <RiMoneyDollarBoxFill className='icon' /> */}
                     <img src={logo} alt="logo" />
                     <p>Gastos</p>
                 </div>
