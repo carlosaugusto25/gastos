@@ -1,7 +1,12 @@
 import { Container, Content } from './styles';
 import logo from '../../assets/cifrao.png';
 
-export function Header() {
+interface ModalProps {
+    openModalNewTransaction: (val: boolean) => void;
+}
+
+export function Header({openModalNewTransaction}: ModalProps) {
+    
     return (
         <Container>
             <Content>
@@ -9,7 +14,9 @@ export function Header() {
                     <img src={logo} alt="logo" />
                     <p>Gastos</p>
                 </div>
-                <button>Nova transação</button>
+                <button onClick={()=>openModalNewTransaction(true)}>Nova transação</button>
+
+                
             </Content>
         </Container>
     )
