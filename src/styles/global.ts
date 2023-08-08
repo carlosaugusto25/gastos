@@ -56,4 +56,44 @@ export default createGlobalStyle`
         opacity: 0.6;
         cursor: not-allowed;
     }
+
+    .react-modal-overlay {
+        position: fixed; // para o modal ficar fixo na tela independente da rolagem
+
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+
+        //deixar o modal centralizado
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        background-color: rgba(0,0,0,0.5);
+    }
+
+    .react-modal-content {
+        background-color: var(--background);
+        width: 100%;
+        max-width: 576px;
+        padding: 3rem;
+        position: relative;
+        border-radius: 0.25rem;
+    }
+
+    .react-close-button {
+        position: absolute;
+        right: 1.5rem;
+        top: 1.5rem;
+        color: var(--text-body);
+        font-size: 1.5rem;
+        cursor: pointer;
+
+        transition: filter 0.2s;
+
+        &:hover {
+            filter: brightness(0.8);
+        }
+    }
 `;
