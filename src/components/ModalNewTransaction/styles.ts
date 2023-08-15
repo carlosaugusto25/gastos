@@ -1,5 +1,10 @@
 import styled from "styled-components";
-import { darken } from "polished";
+import { darken, transparentize } from "polished";
+
+interface ButtonProps {
+    isActive: boolean;
+    activeColor: 'green' | 'red';
+}
 
 export const Container = styled.form`
     h2 {
@@ -55,38 +60,47 @@ export const TransactionTypeContainer = styled.div`
     gap:0.5rem;
     margin: 1rem 0;
 
-    button {
-        height: 4rem;
-        border: 1px solid #d7d7d7;
-        border-radius: 0.25rem;
+    
+`;
 
-        background-color: transparent;
+const colors = {
+    green: '#5adb94',
+    red: '#e52e4d',
+}
 
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 0.5rem;
+export const ButtonComponent = styled.button<ButtonProps>`
+    
+    height: 4rem;
+    border: 1px solid #d7d7d7;
+    border-radius: 0.25rem;
 
-        transition: border-color .2s;
+    background-color: ${(props)=> props.isActive ? transparentize(0.9,colors[props.activeColor]) : 'transparent'};
 
-        &:hover {
-            border-color: ${darken(0.1, '#d7d7d7')};
-        }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
 
-        .up-arrow {
-            font-size: 1.5rem;
-            color: var(--green-primary);
-        }
+    transition: border-color .2s;
 
-        .down-arrow {
-            font-size: 1.5rem;
-            color: var(--red-primary);
-        }
-
-        span {
-            display: inline-block;
-            font-size: 1rem;
-            color: var(--text-title);
-        }
+    &:hover {
+        border-color: ${darken(0.1, '#d7d7d7')};
     }
+
+    .up-arrow {
+        font-size: 1.5rem;
+        color: var(--green-primary);
+    }
+
+    .down-arrow {
+        font-size: 1.5rem;
+        color: var(--red-primary);
+    }
+
+    span {
+        display: inline-block;
+        font-size: 1rem;
+        color: var(--text-title);
+    }
+    
 `;

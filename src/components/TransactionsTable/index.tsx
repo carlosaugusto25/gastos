@@ -1,7 +1,27 @@
+import { useEffect, useState } from "react";
 import { Container } from "./styles";
+import { api } from "../../service/api";
 
-export function TransactionsTable(){
-    return(
+interface IPropsTransactionsTable {
+    id: number;
+    title: string;
+    category: string;
+    amount: number;
+    createdAt: string;
+    type: string;
+}
+
+export function TransactionsTable() {
+
+    const [transactionsTable, setTransactionsTable] = useState<IPropsTransactionsTable[]>([])
+
+    useEffect(() => {
+        api.get('transactions').then(res => {
+            setTransactionsTable(res.data.transactions)
+        })
+    }, [])
+
+    return (
         <Container>
             <table>
                 <thead>
@@ -13,18 +33,17 @@ export function TransactionsTable(){
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Desenvolvimento de website</td>
-                        <td className="deposit">R$ 12.000</td>
-                        <td>Desenvolvimento</td>
-                        <td>20/02/2021</td>
-                    </tr>
-                    <tr>
-                        <td>Aluguel</td>
-                        <td className="with-draw">- R$ 500</td>
-                        <td>Casa</td>
-                        <td>20/02/2021</td>
-                    </tr> 
+                    {transactionsTable.map(tran => (
+                        <tr key={tran.id}>
+                            <td>{tran.title}</td>
+                            <td className={tran.type}>{new Intl.NumberFormat('pt-BR', {
+                                style: 'currency',
+                                currency: 'BRL'
+                            }).format(tran.amount)}</td>
+                            <td>{tran.category}</td>
+                            <td>{new Intl.DateTimeFormat('pt-BR').format(new Date(tran.createdAt))}</td>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
         </Container>
